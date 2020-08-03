@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <title>Start Page</title>
+    </head>
+    <body>
+        <h1>Part 1 Of Task 1</h1>
+            <ul>
+                {% for i in nums %}
+                    <li>{{i}}</li>
+                {% endfor %}
+            </ul>
+
+        <form action="Numbers" method="GET">
+            <div>
+                <label for="start">Start</label>
+                <input type="number" name="start"  id="start">
+            </div>
+            <div>
+                <label for="end">End</label>
+                <input type="number" name="end" id="end">
+            </div>
+            <div>
+                <button>
+                    Get Numbers
+                </button>
+            </div>
+        </form>
+    </body>
+</html>
