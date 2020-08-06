@@ -12,15 +12,26 @@ def index(request):
 
 
 def get_nums(request):
-    start = int(request.GET.get('start', 1))
-    end = int(request.GET.get('end', 21))
-    if end > start:
-        nums.clear()
+    start = 1
+    end = 21
+    try:
+        assert start is not None and end is not None
 
-        for i in range(start, end+1):
-            nums.append(i)
+        start = int(request.GET.get('start'))
+        end = int(request.GET.get('end'))
 
-        return render(request, 'Numbers.html', {'nums': nums})
-    else:
-        return HttpResponse('Ending value cannot be smaller than the Starting Value!')
+        if end > start:
+            nums.clear()
 
+            for i in range(start, end + 1):
+                nums.append(i)
+
+            return render(request, 'Numbers.html', {'nums': nums})
+        else:
+            return HttpResponse('Ending value cannot be smaller than the Starting Value!')
+    except ValueError:
+        tpl = tuple(x for x in range(1, 21))
+        context = {
+            'iterator': tpl
+        }
+        return render(request, 'Numbers.html', context=context)
