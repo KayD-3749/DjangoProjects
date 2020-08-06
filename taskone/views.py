@@ -12,8 +12,8 @@ def index(request):
 
 
 def get_nums(request):
-    start = 1
-    end = 21
+    start = 0
+    end = 0
     try:
         assert start is not None and end is not None
 
